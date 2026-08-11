@@ -12,11 +12,13 @@
 
 #include "algorithms.h"
 
-void	sort_simple(t_stack *a, t_stack *b)
+int	sort_simple(t_stack *a, t_stack *b) // atualizar para retornar a quantidade de operações para utilizar no bench
 {
 	int	min_idx;
 	int	rot;
+	int count_op;
 
+	count_op = 0;
 	if (a->size <= 1)
 		return ;
 	while (a->size > 0)
@@ -26,16 +28,17 @@ void	sort_simple(t_stack *a, t_stack *b)
 		{
 			rot = min_idx;
 			while (rot--)
-				ra(a);
+				count_op += ra(a);
 		}
 		else
 		{
 			rot = a->size - min_idx;
 			while (rot--)
-				rra(a);
+				count_op += rra(a);
 		}
-		pb(a, b);
+		count_op += pb(a, b);
 	}
 	while (b->size > 0)
-		pa(a, b);
+		count_op += pa(a, b);
+	return (count_op);
 }

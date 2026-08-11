@@ -12,14 +12,16 @@
 
 #include "algorithms.h"
 
-void	sort_complex(t_stack *a, t_stack *b)
+int	sort_complex(t_stack *a, t_stack *b) // atualizar para retornar a quantidade de operações para utilizar no bench
 {
 	int	max_bit;
 	int	bit;
 	int	cnt;
 	int	i;
+	int count_op;
 
 	max_bit = 0;
+	count_op = 0;
 	while ((a->size - 1) >> max_bit)
 		max_bit++;
 	bit = 0;
@@ -30,14 +32,17 @@ void	sort_complex(t_stack *a, t_stack *b)
 		while (i < cnt)
 		{
 			if (((a->top->index >> bit) & 1) == 0)
-				pb(a, b);
+				count_op += pb(a, b);
 			else
-				ra(a);
+				count_op += ra(a);
 			i++;
 		}
 		while (b->size > 0)
-			pa(a, b);
+			count_op += pa(a, b);
 		bit++;
 	}
+	return (count_op);
 }
+
+
 

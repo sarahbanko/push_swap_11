@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   operations.h                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sbanko <sbanko@student.42.fr>              +#+  +:+       +#+        */
+/*   By: sarahbanko <sarahbanko@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/10 14:02:44 by sbanko            #+#    #+#             */
-/*   Updated: 2026/08/10 14:02:45 by sbanko           ###   ########.fr       */
+/*   Updated: 2026/08/11 16:34:43 by sarahbanko       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,19 +15,19 @@
 
 #include "../stack/stack.h"
 
-void    swap(t_stack *s);
-void    sa(t_stack *a);
-void    sb(t_stack *b);
-void    ss(t_stack *a, t_stack *b);
-void    pa(t_stack *a, t_stack *b);
-void    pb(t_stack *b, t_stack *a);
+int    swap(t_stack *s);
+int    sa(t_stack *a);
+int    sb(t_stack *b);
+int    ss(t_stack *a, t_stack *b);
+int    pa(t_stack *a, t_stack *b);
+int    pb(t_stack *b, t_stack *a);
 void    rotate(t_stack *s);
-void    ra(t_stack *a);
-void    rb(t_stack *b);
-void    rr(t_stack *a, t_stack *b);
+int    ra(t_stack *a);
+int    rb(t_stack *b);
+int    rr(t_stack *a, t_stack *b);
 void    rev_rotate(t_stack *s);
-void    rra(t_stack *a);
-void    rrb(t_stack *b);
-void    rrr(t_stack *a, t_stack *b);
+int    rra(t_stack *a);
+int    rrb(t_stack *b);
+int    rrr(t_stack *a, t_stack *b);
 
 #endif

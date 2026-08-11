@@ -77,6 +77,7 @@ int	main(int argc, char **argv)
 	t_stack		*a;
 	t_stack		*b;
 	char		**args;
+	int 		total_oper;
 
 	args = build_args(argc, argv, &argc);
 	if (!args)
@@ -93,7 +94,8 @@ int	main(int argc, char **argv)
 	b = stack_init();
 	if (!b)
 		return (stack_free(a), 1);
-	sort_stack(a, b, MEDIUM, bench); // DEFAULT VALUE IS strat
+	total_oper = 0;
+	total_oper += sort_stack(a, b, MEDIUM, bench); // DEFAULT VALUE IS strat
 	stack_free(a);
 	stack_free(b);
 	return (0);

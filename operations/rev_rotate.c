@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rev_rotate.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sbanko <sbanko@student.42.fr>              +#+  +:+       +#+        */
+/*   By: sarahbanko <sarahbanko@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/10 14:03:05 by sbanko            #+#    #+#             */
-/*   Updated: 2026/08/10 14:03:06 by sbanko           ###   ########.fr       */
+/*   Updated: 2026/08/11 16:36:13 by sarahbanko       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,27 +22,39 @@ void    rev_rotate(t_stack *s)
     stack_push_top(s, last_node);
 }
 
-void    rra(t_stack *a)
+int    rra(t_stack *a)
 {
+    int count_rra;
+
+    count_rra = 1;
     if (!a || a->size < 2)
-        return ;
+        return (0);
     rev_rotate(a);
     write(1, "rra\n", 4);
+    return (count_rra);
 }
 
-void    rrb(t_stack *b)
+int    rrb(t_stack *b)
 {
+    int count_rrb;
+    
+    count_rrb = 1;
     if (!b || b->size < 2)
-        return ;
+        return (0);
     rev_rotate(b);
     write(1, "rrb\n", 4);
+    return (count_rrb);
 }
 
-void    rrr(t_stack *a, t_stack *b)
+int    rrr(t_stack *a, t_stack *b)
 {
+    int count_rrr;
+
+    count_rrr = 1;
     if ((!a || a->size < 2) && (!b || b->size < 2))
-        return ;
+        return (0);
     rev_rotate(a);
     rev_rotate(b);
     write(1, "rrr\n", 4);
+    return (count_rrr);
 }
