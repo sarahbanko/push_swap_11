@@ -10,13 +10,12 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-
 #ifndef ALGORITHMS_H
-#define ALGORITHMS_H
+# define ALGORITHMS_H
 
-#include "../operations/operations.h"
-#include "../utils/ft_split.h"
-#include "../parsing/parsing.h"
+# include "../operations/operations.h"
+# include "../utils/ft_split.h"
+# include "../parsing/parsing.h"
 
 typedef struct s_chunk
 {
@@ -29,15 +28,15 @@ typedef struct s_chunk
 	int	current;
 }	t_chunk;
 
-double compute_disorder(t_stack *s);
-int	sort_simple(t_stack *a, t_stack *b);
-int	sort_complex(t_stack *a, t_stack *b);
-int	sort_medium(t_stack *a, t_stack *b);
-int square_root(int n);
-int	process_chunk(t_stack *a, t_stack *b, int start, int end);
-int push_stack_a(t_stack *b, int current_index);
-int	sort_adaptive(t_stack *a, t_stack *b);
-void    bench_disorder(double disorder);
-void    bench_strategy(t_strategy strat, double disorder, int op_count);
+double	compute_disorder(t_stack *s);
+int		sort_simple(t_stack *a, t_stack *b);
+int		sort_complex(t_stack *a, t_stack *b);
+int		sort_medium(t_stack *a, t_stack *b);
+int		square_root(int n);
+int		process_chunk(t_stack *a, t_stack *b, int start, int end);
+int		push_stack_a(t_stack *b, int current_index);
+int		sort_adaptive(t_stack *a, t_stack *b);
+void	bench_disorder(double disorder);
+void	bench_strategy(t_strategy strat, double disorder, t_opcount *c);
 
 #endif

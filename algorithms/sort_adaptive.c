@@ -12,19 +12,16 @@
 
 #include "algorithms.h"
 
-int	sort_adaptive(t_stack *a, t_stack *b) // atualizar para retornar a quantidade de operações para utilizar no bench
+int	sort_adaptive(t_stack *a, t_stack *b)
 {
 	double	d;
-	int count_op;
 
-	count_op = 0;
 	d = compute_disorder(a);
 	if (d < 0.2)
-		count_op = sort_simple(a, b);
+		sort_simple(a, b);
 	else if (d < 0.5)
-		count_op = sort_medium(a, b);
+		sort_medium(a, b);
 	else
-		count_op = sort_complex(a, b);
-	
-	return (count_op);
+		sort_complex(a, b);
+	return (0);
 }

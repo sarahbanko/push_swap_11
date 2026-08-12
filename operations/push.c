@@ -12,26 +12,28 @@
 
 #include "operations.h"
 
-int    pa(t_stack *a, t_stack *b)
+int	pa(t_stack *a, t_stack *b)
 {
-    int count_pa;
+	int	count_pa;
 
-    count_pa = 1;
-    if (!a || !b || b->size == 0)
-        return (0);
-    stack_push_top(a, stack_pop_top(b));
-    write(1, "pa\n", 3);
-    return (count_pa);
+	count_pa = 1;
+	if (!a || !b || b->size == 0)
+		return (0);
+	stack_push_top(a, stack_pop_top(b));
+	inc_opcount(OP_PA);
+	write(1, "pa\n", 3);
+	return (count_pa);
 }
 
-int    pb(t_stack *b, t_stack *a)
+int	pb(t_stack *b, t_stack *a)
 {
-    int count_pb;
-    
-    count_pb = 1;
-    if (!a || !b || a->size == 0)
-        return (0);
-    stack_push_top(b, stack_pop_top(a));
-    write(1, "pb\n", 3);
-    return (count_pb);
+	int	count_pb;
+
+	count_pb = 1;
+	if (!a || !b || a->size == 0)
+		return (0);
+	stack_push_top(b, stack_pop_top(a));
+	inc_opcount(OP_PB);
+	write(1, "pb\n", 3);
+	return (count_pb);
 }

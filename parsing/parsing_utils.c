@@ -11,7 +11,9 @@
 /* ************************************************************************** */
 
 #include "parsing.h"
-#include <limits.h>
+
+#define PARSING_INT_MAX 2147483647
+#define PARSING_INT_MIN -2147483648
 
 int	match_flag(const char *user_flag, const char *real_flag)
 {
@@ -32,7 +34,8 @@ static int	parse_digits(const char *str, int *i, long *result, int sign)
 	while (str[*i] >= '0' && str[*i] <= '9')
 	{
 		*result = *result * 10 + (str[*i] - '0');
-		if (*result * sign > INT_MAX || *result * sign < INT_MIN)
+		if (*result * sign > PARSING_INT_MAX
+			|| *result * sign < PARSING_INT_MIN)
 			return (0);
 		(*i)++;
 	}
@@ -42,8 +45,8 @@ static int	parse_digits(const char *str, int *i, long *result, int sign)
 int	is_valid_int(const char *str, int *value)
 {
 	long	res;
-	int	sign;
-	int	i;
+	int		sign;
+	int		i;
 
 	sign = 1;
 	res = 0;
@@ -71,7 +74,7 @@ int	is_valid_int(const char *str, int *value)
 int	has_duplicate(t_stack *a, int value)
 {
 	t_node	*current;
-	int	i;
+	int		i;
 
 	if (!a || a->size == 0)
 		return (0);
@@ -85,48 +88,4 @@ int	has_duplicate(t_stack *a, int value)
 		i++;
 	}
 	return (0);
-
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

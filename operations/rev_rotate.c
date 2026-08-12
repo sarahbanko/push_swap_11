@@ -12,49 +12,52 @@
 
 #include "operations.h"
 
-void    rev_rotate(t_stack *s)
+void	rev_rotate(t_stack *s)
 {
-    t_node  *last_node;
+	t_node	*last_node;
 
-    if (!s || s->size < 2)
-        return ;
-    last_node = stack_pop_bottom(s);
-    stack_push_top(s, last_node);
+	if (!s || s->size < 2)
+		return ;
+	last_node = stack_pop_bottom(s);
+	stack_push_top(s, last_node);
 }
 
-int    rra(t_stack *a)
+int	rra(t_stack *a)
 {
-    int count_rra;
+	int	count_rra;
 
-    count_rra = 1;
-    if (!a || a->size < 2)
-        return (0);
-    rev_rotate(a);
-    write(1, "rra\n", 4);
-    return (count_rra);
+	count_rra = 1;
+	if (!a || a->size < 2)
+		return (0);
+	rev_rotate(a);
+	inc_opcount(OP_RRA);
+	write(1, "rra\n", 4);
+	return (count_rra);
 }
 
-int    rrb(t_stack *b)
+int	rrb(t_stack *b)
 {
-    int count_rrb;
-    
-    count_rrb = 1;
-    if (!b || b->size < 2)
-        return (0);
-    rev_rotate(b);
-    write(1, "rrb\n", 4);
-    return (count_rrb);
+	int	count_rrb;
+
+	count_rrb = 1;
+	if (!b || b->size < 2)
+		return (0);
+	rev_rotate(b);
+	inc_opcount(OP_RRB);
+	write(1, "rrb\n", 4);
+	return (count_rrb);
 }
 
-int    rrr(t_stack *a, t_stack *b)
+int	rrr(t_stack *a, t_stack *b)
 {
-    int count_rrr;
+	int	count_rrr;
 
-    count_rrr = 1;
-    if ((!a || a->size < 2) && (!b || b->size < 2))
-        return (0);
-    rev_rotate(a);
-    rev_rotate(b);
-    write(1, "rrr\n", 4);
-    return (count_rrr);
+	count_rrr = 1;
+	if ((!a || a->size < 2) && (!b || b->size < 2))
+		return (0);
+	rev_rotate(a);
+	rev_rotate(b);
+	inc_opcount(OP_RRR);
+	write(1, "rrr\n", 4);
+	return (count_rrr);
 }

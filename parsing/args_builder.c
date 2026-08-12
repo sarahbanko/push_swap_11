@@ -20,23 +20,23 @@ static int	args_total_len(int argc, char **argv)
 
 	total = 0;
 	i = 1;
-	while (i < argc) 
+	while (i < argc)
 	{
 		j = 0;
-		while (argv[i][j]) 
-			j++; 
-		total += j + 1; 
+		while (argv[i][j])
+			j++;
+		total += j + 1;
 		i++;
 	}
-	return (total); 
+	return (total);
 }
 
 static char	*join_args(int argc, char **argv)
 {
 	char	*joined;
-	int	i;
-	int	j;
-	int	pos;
+	int		i;
+	int		j;
+	int		pos;
 
 	joined = (char *)malloc(args_total_len(argc, argv) + 1);
 	if (!joined)
@@ -46,38 +46,34 @@ static char	*join_args(int argc, char **argv)
 	while (i < argc)
 	{
 		j = 0;
-		while (argv[i][j]) 
-			joined[pos++] = argv[i][j++]; 
-		if (i < argc - 1) 
-			joined[pos++] = ' '; 
+		while (argv[i][j])
+			joined[pos++] = argv[i][j++];
+		if (i < argc - 1)
+			joined[pos++] = ' ';
 		i++;
 	}
-	joined[pos] = '\0'; 
-	return (joined); 
-                         
+	joined[pos] = '\0';
+	return (joined);
 }
 
 static char	**build_dst(char **split, int count, char **argv, int *out_argc)
 {
-	char	**dst; 
-	int	j;
+	char	**dst;
+	int		j;
 
-	
 	dst = (char **)malloc(sizeof(char *) * (count + 2));
 	if (!dst)
 		return (NULL);
-	dst[0] = argv[0]; 
-	j = 0;            
+	dst[0] = argv[0];
+	j = 0;
 	while (j < count)
 	{
-		dst[j + 1] = split[j]; 
+		dst[j + 1] = split[j];
 		j++;
 	}
-	dst[count + 1] = NULL; 
-	*out_argc = count + 1; 
-	return (dst);          
-	
-	
+	dst[count + 1] = NULL;
+	*out_argc = count + 1;
+	return (dst);
 }
 
 char	**build_args(int argc, char **argv, int *out_argc)
@@ -85,7 +81,7 @@ char	**build_args(int argc, char **argv, int *out_argc)
 	char	*joined;
 	char	**split;
 	char	**dst;
-	int	i;
+	int		i;
 
 	joined = join_args(argc, argv);
 	if (!joined)
@@ -97,7 +93,7 @@ char	**build_args(int argc, char **argv, int *out_argc)
 	i = 0;
 	while (split[i])
 		i++;
-	if ( i == 0 && argc > 1)
+	if (i == 0 && argc > 1)
 	{
 		ft_free_split(split);
 		write(2, "Error\n", 6);

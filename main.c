@@ -12,6 +12,7 @@
 
 #include "push_swap.h"
 #include <stdlib.h>
+#include "operations.h"
 
 static int	is_sorted(t_stack *a)
 {
@@ -44,30 +45,33 @@ static void	free_args(char **args, int argc)
 
 static void	sort_stack(t_stack *a, t_stack *b, t_strategy strat, int bench)
 {
-	double	disorder;
-  int op_count;
+	double		disorder;
+	t_opcount	opc;
 
-  op_count = 0;
+	opc = (t_opcount){0};
 	if (is_sorted(a))
 		return ;
 	index_stack(a);
 	disorder = 0.0;
 	if (bench)
 		disorder = compute_disorder(a);
+	set_opcount_ptr(&opc);
 	if (strat == SIMPLE)
-	op_count = sort_simple(a, b);
+		sort_simple(a, b);
 	else if (strat == MEDIUM)
-	op_count = sort_medium(a, b);
+		sort_medium(a, b);
 	else if (strat == COMPLEX)
-		op_count = sort_complex(a, b);
+		sort_complex(a, b);
 	else
-		op_count = sort_adaptive(a, b);
+		sort_adaptive(a, b);
+	set_opcount_ptr(NULL);
 	if (bench)
-  {
-    bench_disorder(disorder);
-    bench_strategy(strat, disorder, op_count);
-  }
+	{
+		bench_disorder(disorder);
+		bench_strategy(strat, disorder, &opc);
+	}
 }
+
 int	main(int argc, char **argv)
 {
 	t_strategy	strat;
@@ -75,7 +79,7 @@ int	main(int argc, char **argv)
 	t_stack		*a;
 	t_stack		*b;
 	char		**args;
-	
+
 	args = build_args(argc, argv, &argc);
 	if (!args)
 		return (1);

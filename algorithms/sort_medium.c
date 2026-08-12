@@ -24,37 +24,33 @@ static void	init_chunk(t_chunk *chunk, int size)
 	chunk->end = chunk->elements - 1;
 	chunk->current = 0;
 }
-static int move_b_to_a(t_stack *a, t_stack *b)
+
+static int	move_b_to_a(t_stack *a, t_stack *b)
 {
-   int current_index;
-   int count_op;
-   
-   if (!a || !b || b->size == 0)
+	int	current_index;
+
+	if (!a || !b || b->size == 0)
 		return (0);
-    current_index = b->size - 1;
-    count_op = 0;
-    while (b->size > 0)
-    {
-        count_op += push_stack_a(b, current_index);
-        pa(a, b);
-        count_op++;
-        current_index--;
-    }
-    return (count_op);
+	current_index = b->size - 1;
+	while (b->size > 0)
+	{
+		push_stack_a(b, current_index);
+		pa(a, b);
+		current_index--;
+	}
+	return (0);
 }
 
 int	sort_medium(t_stack *a, t_stack *b)
 {
 	t_chunk	chunk;
-	int		count_op;
 
 	if (!a || !b || a->size < 2)
 		return (0);
 	init_chunk(&chunk, a->size);
-	count_op = 0;
 	while (chunk.current < chunk.count)
 	{
-		count_op += process_chunk(a, b, chunk.start, chunk.end);
+		process_chunk(a, b, chunk.start, chunk.end);
 		chunk.current++;
 		chunk.start = chunk.end + 1;
 		chunk.elements = chunk.base_size;
@@ -62,8 +58,6 @@ int	sort_medium(t_stack *a, t_stack *b)
 			chunk.elements++;
 		chunk.end = chunk.start + chunk.elements - 1;
 	}
-    count_op += move_b_to_a(a, b);
-	return (count_op);
+	move_b_to_a(a, b);
+	return (0);
 }
-
-
