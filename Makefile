@@ -23,7 +23,8 @@ SHARED		= utils/ft_utils.c \
 			  algorithms/sort_simple.c \
 			  algorithms/sort_medium.c \
 			  algorithms/sort_complex.c \
-			  algorithms/sort_adaptive.c
+			  algorithms/sort_adaptive.c \
+				algorithms/bench.c
 
 PS_SRCS		= main.c
 CH_SRCS		= checker_bonus/checker_main.c checker_bonus/op_silent.c

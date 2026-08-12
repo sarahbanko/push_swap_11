@@ -20,7 +20,7 @@ int	sort_simple(t_stack *a, t_stack *b) // atualizar para retornar a quantidade 
 
 	count_op = 0;
 	if (a->size <= 1)
-		return ;
+		return (0);
 	while (a->size > 0)
 	{
 		min_idx = stack_min_pos(a);

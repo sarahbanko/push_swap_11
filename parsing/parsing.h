@@ -13,8 +13,8 @@
 #ifndef PARSING_H
 #define PARSING_H
 
-#include "../algorithms/algorithms.h"
 #include "ft_split.h"
+#include "../stack/stack.h"
 #include <stdlib.h>
 #include <unistd.h>
 

@@ -37,5 +37,7 @@ int square_root(int n);
 int	process_chunk(t_stack *a, t_stack *b, int start, int end);
 int push_stack_a(t_stack *b, int current_index);
 int	sort_adaptive(t_stack *a, t_stack *b);
+void    bench_disorder(double disorder);
+void    bench_strategy(t_strategy strat, double disorder, int op_count);
 
 #endif
