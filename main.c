@@ -68,7 +68,7 @@ static void	sort_stack(t_stack *a, t_stack *b, t_strategy strat, int bench)
 	if (bench)
 	{
 		bench_disorder(disorder);
-		bench_strategy(strat, disorder, &opc);
+		bench_strategy(strat, disorder, &opc, a->size);
 	}
 }
 

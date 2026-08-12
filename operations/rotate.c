@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rotate.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sarahbanko <sarahbanko@student.42.fr>      +#+  +:+       +#+        */
+/*   By: sbanko <sbanko@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/10 14:03:14 by sbanko            #+#    #+#             */
-/*   Updated: 2026/08/11 16:36:07 by sarahbanko       ###   ########.fr       */
+/*   Updated: 2026/08/12 14:19:27 by sbanko           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,42 +22,30 @@ void	rotate(t_stack *s)
 	stack_push_bottom(s, first_node);
 }
 
-int	ra(t_stack *a)
+void	ra(t_stack *a)
 {
-	int	count_ra;
-
-	count_ra = 1;
 	if (!a || a->size < 2)
-		return (0);
+		return ;
 	rotate(a);
 	inc_opcount(OP_RA);
 	write(1, "ra\n", 3);
-	return (count_ra);
 }
 
-int	rb(t_stack *b)
+void	rb(t_stack *b)
 {
-	int	count_rb;
-
-	count_rb = 1;
 	if (!b || b->size < 2)
-		return (0);
+		return ;
 	rotate(b);
 	inc_opcount(OP_RB);
 	write(1, "rb\n", 3);
-	return (count_rb);
 }
 
-int	rr(t_stack *a, t_stack *b)
+void	rr(t_stack *a, t_stack *b)
 {
-	int	count_rr;
-
-	count_rr = 1;
 	if ((!a || a->size < 2) && (!b || b->size < 2))
-		return (0);
+		return ;
 	rotate(a);
 	rotate(b);
 	inc_opcount(OP_RR);
 	write(1, "rr\n", 3);
-	return (count_rr);
 }

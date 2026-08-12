@@ -12,31 +12,55 @@
 
 #include "algorithms.h"
 
-int	sort_simple(t_stack *a, t_stack *b)
+static void sort_three(t_stack *a)
 {
-	int	min_idx;
-	int	rot;
+    int top = a->top->content;
+    int mid = a->top->next->content;
+    int bot = a->top->next->next->content;
 
-	if (a->size <= 1)
-		return (0);
-	while (a->size > 0)
-	{
-		min_idx = stack_min_pos(a);
-		if (min_idx <= a->size / 2)
-		{
-			rot = min_idx;
-			while (rot--)
-				ra(a);
+    if (top > mid && mid < bot && top < bot)
+        sa(a);
+    else if (top > mid && mid > bot)
+        { 
+			sa(a);
+			rra(a); 
 		}
-		else
-		{
-			rot = a->size - min_idx;
-			while (rot--)
-				rra(a);
+    else if (top > mid && mid < bot && top > bot)
+        ra(a);
+    else if (top < mid && mid > bot && top < bot)
+        { 
+			sa(a);
+			ra(a); 
 		}
-		pb(b, a);
-	}
-	while (b->size > 0)
-		pa(a, b);
-	return (0);
+    else if (top < mid && mid > bot && top > bot)
+        rra(a);
+}
+
+void sort_simple(t_stack *a, t_stack *b)
+{
+    int min_pos;
+
+    if (a->size <= 1)
+        return ;
+    if (a->size == 2 && a->top->content > a->top->next->content)
+        sa(a);
+    else if (a->size == 3)
+        sort_three(a);
+    else if (a->size <= 5)
+    {
+        while (a->size > 3)
+        {
+            min_pos = stack_min_pos(a);
+            if (min_pos <= a->size / 2)
+                while (min_pos--)
+                    ra(a);
+            else
+                while (min_pos++ < a->size)
+                    rra(a);
+            pb(b, a);
+        }
+        sort_three(a);
+        while (b->size > 0)
+            pa(a, b);
+    }
 }

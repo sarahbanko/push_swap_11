@@ -31,7 +31,7 @@ static void	process_bit(t_stack *a, t_stack *b, int bit)
 		pa(a, b);
 }
 
-int	sort_complex(t_stack *a, t_stack *b)
+void	sort_complex(t_stack *a, t_stack *b)
 {
 	int	max_bit;
 	int	bit;
@@ -45,5 +45,4 @@ int	sort_complex(t_stack *a, t_stack *b)
 		process_bit(a, b, bit);
 		bit++;
 	}
-	return (0);
 }

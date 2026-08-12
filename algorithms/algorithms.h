@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   algorithms.h                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sarahbanko <sarahbanko@student.42.fr>      +#+  +:+       +#+        */
+/*   By: sbanko <sbanko@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/10 14:02:15 by sbanko            #+#    #+#             */
-/*   Updated: 2026/08/11 16:37:34 by sarahbanko       ###   ########.fr       */
+/*   Updated: 2026/08/12 18:22:09 by sbanko           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,14 +29,14 @@ typedef struct s_chunk
 }	t_chunk;
 
 double	compute_disorder(t_stack *s);
-int		sort_simple(t_stack *a, t_stack *b);
-int		sort_complex(t_stack *a, t_stack *b);
-int		sort_medium(t_stack *a, t_stack *b);
+void	sort_simple(t_stack *a, t_stack *b);
+void	sort_complex(t_stack *a, t_stack *b);
+void	sort_medium(t_stack *a, t_stack *b);
 int		square_root(int n);
 int		process_chunk(t_stack *a, t_stack *b, int start, int end);
 int		push_stack_a(t_stack *b, int current_index);
 int		sort_adaptive(t_stack *a, t_stack *b);
 void	bench_disorder(double disorder);
-void	bench_strategy(t_strategy strat, double disorder, t_opcount *c);
+void	bench_strategy(t_strategy strat, double disorder, t_opcount *c, int s_size);
 
 #endif

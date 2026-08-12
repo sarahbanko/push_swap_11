@@ -17,7 +17,9 @@ int	sort_adaptive(t_stack *a, t_stack *b)
 	double	d;
 
 	d = compute_disorder(a);
-	if (d < 0.2)
+	if (a->size <= 5)
+		sort_simple(a, b);
+	else if (d < 0.2)
 		sort_simple(a, b);
 	else if (d < 0.5)
 		sort_medium(a, b);

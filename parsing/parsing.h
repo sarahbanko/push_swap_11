@@ -6,14 +6,14 @@
 /*   By: sbanko <sbanko@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/28 12:18:14 by sarahbanko        #+#    #+#             */
-/*   Updated: 2026/08/10 14:06:36 by sbanko           ###   ########.fr       */
+/*   Updated: 2026/08/12 14:13:25 by sbanko           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PARSING_H
 # define PARSING_H
 
-# include "ft_split.h"
+# include "../utils/ft_split.h"
 # include "../stack/stack.h"
 # include <stdlib.h>
 # include <unistd.h>

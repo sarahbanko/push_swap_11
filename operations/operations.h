@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   operations.h                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sarahbanko <sarahbanko@student.42.fr>      +#+  +:+       +#+        */
+/*   By: sbanko <sbanko@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/10 14:02:44 by sbanko            #+#    #+#             */
-/*   Updated: 2026/08/12 11:30:00 by adrperei         ###   ########.fr       */
+/*   Updated: 2026/08/12 14:22:08 by sbanko           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,18 +48,18 @@ enum e_op
 void	set_opcount_ptr(t_opcount *c);
 void	inc_opcount(int type);
 void	swap(t_stack *s);
-int		sa(t_stack *a);
-int		sb(t_stack *b);
-int		ss(t_stack *a, t_stack *b);
-int		pa(t_stack *a, t_stack *b);
-int		pb(t_stack *b, t_stack *a);
+void	sa(t_stack *a);
+void	sb(t_stack *b);
+void	ss(t_stack *a, t_stack *b);
+void	pa(t_stack *a, t_stack *b);
+void	pb(t_stack *b, t_stack *a);
 void	rotate(t_stack *s);
-int		ra(t_stack *a);
-int		rb(t_stack *b);
-int		rr(t_stack *a, t_stack *b);
+void	ra(t_stack *a);
+void	rb(t_stack *b);
+void	rr(t_stack *a, t_stack *b);
 void	rev_rotate(t_stack *s);
-int		rra(t_stack *a);
-int		rrb(t_stack *b);
-int		rrr(t_stack *a, t_stack *b);
+void	rra(t_stack *a);
+void	rrb(t_stack *b);
+void	rrr(t_stack *a, t_stack *b);
 
 #endif

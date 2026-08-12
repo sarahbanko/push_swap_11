@@ -6,7 +6,7 @@
 /*   By: sbanko <sbanko@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/05 13:08:39 by sarahbanko        #+#    #+#             */
-/*   Updated: 2026/08/10 13:39:35 by sbanko           ###   ########.fr       */
+/*   Updated: 2026/08/12 18:22:31 by sbanko           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,12 +41,12 @@ static int	move_b_to_a(t_stack *a, t_stack *b)
 	return (0);
 }
 
-int	sort_medium(t_stack *a, t_stack *b)
+void	sort_medium(t_stack *a, t_stack *b)
 {
 	t_chunk	chunk;
 
 	if (!a || !b || a->size < 2)
-		return (0);
+		return ;
 	init_chunk(&chunk, a->size);
 	while (chunk.current < chunk.count)
 	{
@@ -59,5 +59,4 @@ int	sort_medium(t_stack *a, t_stack *b)
 		chunk.end = chunk.start + chunk.elements - 1;
 	}
 	move_b_to_a(a, b);
-	return (0);
 }
