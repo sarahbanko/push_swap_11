@@ -42,16 +42,12 @@ static void	free_args(char **args, int argc)
 	free(args);
 }
 
-static void	bench_report(t_strategy strat, double disorder)
-{
-	(void)strat;
-	(void)disorder;
-}
-
 static void	sort_stack(t_stack *a, t_stack *b, t_strategy strat, int bench)
 {
 	double	disorder;
+  int op_count;
 
+  op_count = 0;
 	if (is_sorted(a))
 		return ;
 	index_stack(a);
@@ -59,17 +55,19 @@ static void	sort_stack(t_stack *a, t_stack *b, t_strategy strat, int bench)
 	if (bench)
 		disorder = compute_disorder(a);
 	if (strat == SIMPLE)
-		sort_simple(a, b);
+	op_count = sort_simple(a, b);
 	else if (strat == MEDIUM)
-		sort_medium(a, b);
+	op_count = sort_medium(a, b);
 	else if (strat == COMPLEX)
-		sort_complex(a, b);
+		op_count = sort_complex(a, b);
 	else
-		sort_adaptive(a, b);
+		op_count = sort_adaptive(a, b);
 	if (bench)
-		bench_report(strat, disorder);
+  {
+    bench_disorder(disorder);
+    bench_strategy(strat, disorder, op_count);
+  }
 }
-
 int	main(int argc, char **argv)
 {
 	t_strategy	strat;
@@ -77,8 +75,7 @@ int	main(int argc, char **argv)
 	t_stack		*a;
 	t_stack		*b;
 	char		**args;
-	int 		total_oper;
-
+	
 	args = build_args(argc, argv, &argc);
 	if (!args)
 		return (1);
@@ -94,8 +91,7 @@ int	main(int argc, char **argv)
 	b = stack_init();
 	if (!b)
 		return (stack_free(a), 1);
-	total_oper = 0;
-	total_oper += sort_stack(a, b, MEDIUM, bench); // DEFAULT VALUE IS strat
+	sort_stack(a, b, strat, bench);
 	stack_free(a);
 	stack_free(b);
 	return (0);

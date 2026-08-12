@@ -12,7 +12,7 @@
 
 #include "algorithms.h"
 
-void bench_disorder(double disorder)
+void  bench_disorder(double disorder)
 {
     int integer_part;
     int decimal_part;
@@ -31,7 +31,7 @@ void bench_disorder(double disorder)
     write(2, "\n", 1);
 }
 
-void bench_strategy(t_strategy strat, double disorder) // receber a disorder que foi calculada no começo, pois o bench chama depois q ja executou
+void  bench_strategy(t_strategy strat, double disorder, int op_count) // receber a disorder que foi calculada no começo, pois o bench chama depois q ja executou
 {
     write(2, "strategy: ", 10);
     if (strat == SIMPLE) // conferir essa parte, pois precisamos da strategia q prevaleceu
@@ -50,12 +50,8 @@ void bench_strategy(t_strategy strat, double disorder) // receber a disorder que
         else
             write(2, "O(n log n)", 10);    
     }
-    write(2, "\n", 1); 
-}
-
-void benchmark(double disorder, t_strategy strat)
-{
-    bench_disorder(disorder);
-    bench_strategy(strat, disorder);
-    
+    write(2, "\n", 1);
+    write(2, "Total: ", 7);
+    ft_putnbr_fd(op_count, 1);
+    write(2, "\n", 1);
 }

@@ -15,7 +15,7 @@
 
 #include "../stack/stack.h"
 
-int    swap(t_stack *s);
+void    swap(t_stack *s);
 int    sa(t_stack *a);
 int    sb(t_stack *b);
 int    ss(t_stack *a, t_stack *b);
