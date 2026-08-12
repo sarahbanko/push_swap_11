@@ -12,10 +12,10 @@
 
 #include "stack.h"
 
-t_node *new_node(int value)
+t_node	*new_node(int value)
 {
-	t_node *new_node;
-	
+	t_node	*new_node;
+
 	new_node = malloc(sizeof(t_node));
 	if (!new_node)
 		return (NULL);
@@ -30,7 +30,7 @@ void	stack_push_top(t_stack *s, t_node *node)
 {
 	t_node	*last_node;
 
-	if (!s) 
+	if (!s)
 		return ;
 	if (!s->top)
 	{
@@ -38,17 +38,13 @@ void	stack_push_top(t_stack *s, t_node *node)
 		s->size++;
 		return ;
 	}
-	
 	last_node = s->top->prev;
-		
 	node->next = s->top;
 	node->prev = s->top->prev;
-	
 	s->top->prev = node;
 	last_node->next = node;
 	s->top = node;
 	s->size++;
-
 }
 
 void	stack_push_bottom(t_stack *s, t_node *node)
@@ -64,10 +60,8 @@ void	stack_push_bottom(t_stack *s, t_node *node)
 		return ;
 	}
 	temp = s->top->prev;
-
 	node->next = s->top;
 	node->prev = s->top->prev;
-
 	s->top->prev = node;
 	temp->next = node;
 	s->size++;

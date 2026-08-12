@@ -12,7 +12,7 @@
 
 #include "parsing.h"
 
-static int 	flag_err(void) 
+static int	flag_err(void)
 {
 	write(2, "Error\n", 6);
 	return (0);
@@ -39,7 +39,6 @@ static int	parse_flags(int argc, char **argv, t_strategy *s, int *bench)
 				*bench = 1;
 			else
 				return (flag_err());
-			
 		}
 		i++;
 	}
@@ -55,10 +54,10 @@ static t_stack	*cleanup(t_stack *a)
 
 static int	add_num(t_stack *a, char *arg)
 {
-	t_node *n;
-	int	v;
+	t_node	*n;
+	int		v;
 
-	if(!is_valid_int(arg, &v))
+	if (!is_valid_int(arg, &v))
 		return (0);
 	if (has_duplicate(a, v))
 		return (0);
@@ -72,20 +71,19 @@ static int	add_num(t_stack *a, char *arg)
 t_stack	*parsing(int argc, char **argv, t_strategy *strat, int *bench)
 {
 	t_stack	*a;
-	int	i;
+	int		i;
 
-	*strat = ADAPTIVE; 
-	*bench = 0; 
-	if (!parse_flags(argc, argv, strat, bench)) 
+	*strat = ADAPTIVE;
+	*bench = 0;
+	if (!parse_flags(argc, argv, strat, bench))
 		return (NULL);
-	a = stack_init(); 
+	a = stack_init();
 	if (!a)
-		return  (NULL);
+		return (NULL);
 	i = argc;
-	while (--i >= 1) 
-		if (argv[i][0] != '-' || argv[i][1] != '-') 
-			if (!add_num(a, argv[i]))           
-				return (cleanup(a));        
-	return (a); 
+	while (--i >= 1)
+		if (argv[i][0] != '-' || argv[i][1] != '-')
+			if (!add_num(a, argv[i]))
+				return (cleanup(a));
+	return (a);
 }
-

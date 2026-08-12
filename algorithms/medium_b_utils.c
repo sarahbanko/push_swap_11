@@ -12,56 +12,48 @@
 
 #include "algorithms.h"
 
-static int find_top_distance_b(t_stack *b, int current_index)
+static int	find_top_distance_b(t_stack *b, int current_index)
 {
-    t_node *current;
-    int distance;
+	t_node	*current;
+	int		distance;
 
-    current = b->top;
-    distance = 0;
-    while (current->index != current_index)
-    {
-        distance++;
-        current = current->next;
-    }
-    return (distance);
+	current = b->top;
+	distance = 0;
+	while (current->index != current_index)
+	{
+		distance++;
+		current = current->next;
+	}
+	return (distance);
 }
 
-static int find_bottom_distance_b(t_stack *b, int current_index)
+static int	find_bottom_distance_b(t_stack *b, int current_index)
 {
-    t_node *current;
-    int distance;
+	t_node	*current;
+	int		distance;
 
-    current = b->top->prev;
-    distance = 1;
-    while (current->index != current_index)
-    {
-        distance++;
-        current = current->prev;
-    }
-    return (distance);
+	current = b->top->prev;
+	distance = 1;
+	while (current->index != current_index)
+	{
+		distance++;
+		current = current->prev;
+	}
+	return (distance);
 }
 
-int push_stack_a(t_stack *b, int current_index)
+int	push_stack_a(t_stack *b, int current_index)
 {
-    int count_op;
-
-    count_op = 0;
-
-    if (find_top_distance_b(b, current_index) < find_bottom_distance_b(b, current_index))
-    {   while (b->top->index != current_index)
-        {
-            rb(b);
-            count_op++;
-        }
-    }
-    else
-    {
-        while (b->top->index != current_index)
-        {
-            rrb(b);
-            count_op++;
-        }
-    }
-    return (count_op);
+	if (find_top_distance_b(b, current_index)
+		< find_bottom_distance_b(b, current_index))
+	{
+		while (b->top->index != current_index)
+			rb(b);
+	}
+	else
+	{
+		while (b->top->index != current_index)
+			rrb(b);
+	}
+	return (0);
 }

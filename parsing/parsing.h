@@ -11,25 +11,24 @@
 /* ************************************************************************** */
 
 #ifndef PARSING_H
-#define PARSING_H
+# define PARSING_H
 
-#include "ft_split.h"
-#include "../stack/stack.h"
-#include <stdlib.h>
-#include <unistd.h>
+# include "ft_split.h"
+# include "../stack/stack.h"
+# include <stdlib.h>
+# include <unistd.h>
 
 typedef enum s_strategy {
 	SIMPLE,
 	MEDIUM,
 	COMPLEX,
 	ADAPTIVE
-} t_strategy;
+}	t_strategy;
 
-int	match_flag(const char *user_flag, const char *real_flag);
-int	is_valid_int(const char *str, int *value);
-int	has_duplicate(t_stack *a, int value);
-char	**build_args(int argc, char **argv, int *out_argc);
-t_stack	*parsing(int argc, char **argv, t_strategy *strat, int *bench);
+int			match_flag(const char *user_flag, const char *real_flag);
+int			is_valid_int(const char *str, int *value);
+int			has_duplicate(t_stack *a, int value);
+char		**build_args(int argc, char **argv, int *out_argc);
+t_stack		*parsing(int argc, char **argv, t_strategy *strat, int *bench);
 
 #endif
-

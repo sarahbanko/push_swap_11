@@ -12,32 +12,6 @@
 
 #include "ft_split.h"
 
-void	*ft_memcpy(void *dest, const void *src, size_t n)
-{
-	unsigned char	*s;
-	unsigned char	*d;
-
-	s = (unsigned char *) src;
-	d = (unsigned char *) dest;
-	while (n--)
-		*d++ = *s++;
-	return (dest);
-}
-
-char	*ft_strdup(const char *s)
-{
-	char	*c;
-	size_t	len;
-
-	len = ft_strlen(s);
-	c = malloc(len + 1);
-	if (!c)
-		return (NULL);
-	ft_memcpy(c, s, len);
-	c[len] = '\0';
-	return (c);
-}
-
 size_t	ft_strlen(const char *s)
 {
 	size_t	c;
